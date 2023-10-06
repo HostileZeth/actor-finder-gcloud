@@ -1,0 +1,31 @@
+spring.cloud.gcp:
+  config.enabled: false
+  sql:
+    database-name: actor
+    instance-connection-name: cedar-card-400213:europe-west2:actor-pgsql
+
+spring:
+  sql:
+    init:
+      mode: always
+  datasource:
+    username: postgres
+    password: actor-pgsql
+    hikari.maximum-pool-size: 2
+
+cloud:
+  random.number:
+    22
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    diskspace:
+      enabled: false
+
+pubsub:
+  project-id: cedar-card-400213
+  stats-topic: actor-stats-local
