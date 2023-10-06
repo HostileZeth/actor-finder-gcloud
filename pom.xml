@@ -29,7 +29,6 @@
         <module>actor-service</module>
         <module>stats-service</module>
         <module>actor-common</module>
-        <module>actor-modules-ear</module>
     </modules>
 
     <dependencies>
