@@ -1,3 +1,4 @@
+server.port: 8081
 pubsub:
   project-id: cedar-card-400213
   sub-id: stats-service-cloud-sub

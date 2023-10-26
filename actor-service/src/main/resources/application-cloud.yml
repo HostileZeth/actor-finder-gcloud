@@ -6,3 +6,6 @@ spring.cloud.gcp.config:
 pubsub:
   project-id: cedar-card-400213
   stats-topic: actor-stats-cloud
+
+api-connector-service:
+  url: https://api-connector-service-dot-cedar-card-400213.lm.r.appspot.com

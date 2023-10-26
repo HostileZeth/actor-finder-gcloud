@@ -1,8 +1,11 @@
 package com.mitsudoku.actorfinder.api;
 
 import com.mitsudoku.actorfinder.config.CloudConfig;
+import com.mitsudoku.actorfinder.config.WeatherProperties;
 import com.mitsudoku.actorfinder.pubsub.StatsProducer;
+import com.mitsudoku.client.WeatherClient;
 import com.mitsudoku.model.RequestType;
+import com.mitsudoku.model.WeatherDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,12 +26,22 @@ import java.util.List;
 public class ActorAnalyzeController {
 
     private final CloudConfig config;
+    private final WeatherProperties weatherProperties;
+    private final WeatherClient weatherClient;
     private final StatsProducer statsProducer;
 
     @GetMapping("/test")
     public String test() {
         statsProducer.sendStats(RequestType.TEST);
-        return String.format("There will be an movie's actor list analyzer. And a random number for today is %d", config.getRandomNumber());
+        WeatherDto weather = weatherClient.getWeather(weatherProperties.getLat(), weatherProperties.getLng(), weatherProperties.isCurrentWeather(), weatherProperties.getHourly());
+        String format = "There will be an movie's actor list analyzer. And a random number for today is %d\n";
+        String response = String.format(format, config.getRandomNumber());
+        if (weather.getCurrentWeather() != null) {
+            response += String.format("And the weather in %s is %.2f", weatherProperties.getName(), weather.getCurrentWeather().getTemperature());
+        } else {
+            response += "And the weather is unknown!";
+        }
+        return response;
     }
 
     @GetMapping("/db")

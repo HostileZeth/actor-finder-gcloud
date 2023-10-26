@@ -29,3 +29,14 @@ management:
 pubsub:
   project-id: cedar-card-400213
   stats-topic: actor-stats-local
+
+weather:
+  city:
+    name: Yerevan
+    lat: 40.1872
+    lng: 44.5152
+    currentWeather: true
+    hourly: temperature_2m,relativehumidity_2m,windspeed_10m
+
+api-connector-service:
+  url: localhost:8089

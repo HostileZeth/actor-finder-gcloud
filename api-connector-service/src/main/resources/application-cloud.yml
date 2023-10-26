@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+spring.cloud.gcp.config:
+  enabled: true
+  name: actor_finder
+  profile: cloud
+
+pubsub:
+  project-id: cedar-card-400213
+  stats-topic: actor-stats-cloud
