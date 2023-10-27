@@ -30,6 +30,7 @@
         <module>stats-service</module>
         <module>actor-common</module>
         <module>api-connector-service</module>
+        <module>user-log-function</module>
     </modules>
 
     <dependencies>
@@ -63,6 +64,11 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>2.15.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.cloud.functions</groupId>
+            <artifactId>functions-framework-api</artifactId>
+            <version>1.1.0</version>
         </dependency>
     </dependencies>
 
