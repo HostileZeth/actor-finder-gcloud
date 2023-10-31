@@ -28,6 +28,7 @@ public class HelloWorld implements HttpFunction
         BufferedWriter writer = response.getWriter();
         writeDb(new RequestLog(request.getPath(), LocalDateTime.now()));
         writer.write("Hello World!");
+        writer.close();
     }
 
     private void writeDb(RequestLog requestLog) throws SQLException {

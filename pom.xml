@@ -31,6 +31,7 @@
         <module>actor-common</module>
         <module>api-connector-service</module>
         <module>user-log-function</module>
+        <module>message-log-function</module>
     </modules>
 
     <dependencies>
