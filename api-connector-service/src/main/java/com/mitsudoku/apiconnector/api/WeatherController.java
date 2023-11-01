@@ -1,7 +1,7 @@
-package com.example.apiconnectorservice.api;
+package com.mitsudoku.apiconnector.api;
 
 
-import com.example.apiconnectorservice.client.WeatherClient;
+import com.mitsudoku.apiconnector.client.WeatherClient;
 import com.mitsudoku.model.WeatherDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

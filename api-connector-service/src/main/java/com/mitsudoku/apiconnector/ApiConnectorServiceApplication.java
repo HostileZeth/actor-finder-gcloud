@@ -1,4 +1,4 @@
-package com.example.apiconnectorservice;
+package com.mitsudoku.apiconnector;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

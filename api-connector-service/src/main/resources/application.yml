@@ -3,3 +3,12 @@ server:
 
 weather:
   api.url: https://api.open-meteo.com/v1/forecast
+
+movie:
+  api:
+    url: https://api.themoviedb.org/3
+    token: eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MDViM2VjZDE2ZTdiYzE5MDNhYmM5ODRkOGFjMDcwMiIsInN1YiI6IjY1NDI0MjlmZTFhZDc5MDBjOTY0Y2U0NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9d18NUOpcWIT1VwFQu1iXq_Z58qbDoCl1T84MoZtzJo
+
+logging:
+  level:
+    com.mitsudoku.apiconnector.client: DEBUG

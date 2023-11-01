@@ -1,12 +1,16 @@
-package com.example.apiconnectorservice.client;
+package com.mitsudoku.apiconnector.client;
 
+import com.mitsudoku.config.FeignConfig;
 import com.mitsudoku.model.WeatherDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(name = "weather-client", url = "${weather.api.url}")
+/*
+ * Weather client for debug purposes
+ */
+@FeignClient(name = "weather-client", url = "${weather.api.url}", configuration = FeignConfig.class)
 public interface WeatherClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "?latitude={latitude}&longitude={longitude}&current_weather={currentWeather}&hourly={hourly}")
