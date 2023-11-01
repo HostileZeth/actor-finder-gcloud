@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/actor")
 @RequiredArgsConstructor
-public class ActorAnalyzeController {
+public class DebugController {
 
     private final CloudConfig config;
     private final WeatherProperties weatherProperties;
