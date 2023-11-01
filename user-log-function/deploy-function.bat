@@ -1,0 +1,2 @@
+gcloud functions deploy message-log-function --region=europe-west1 --gen2 --runtime=java17 --entry-point=com.mitsudoku.functions.HelloWorld --trigger-topic=actor-stats-cloud --env-vars-file .env.yaml
+pause
