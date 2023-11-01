@@ -3,7 +3,7 @@ package com.mitsudoku.functions;
 import com.google.cloud.functions.HttpFunction;
 import com.google.cloud.functions.HttpRequest;
 import com.google.cloud.functions.HttpResponse;
-import com.mitsudoku.db.DbConnection;
+import com.mitsudoku.function.common.db.DbConnection;
 import lombok.Data;
 
 import javax.sql.DataSource;

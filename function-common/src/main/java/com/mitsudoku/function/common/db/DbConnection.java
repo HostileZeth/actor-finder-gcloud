@@ -1,4 +1,4 @@
-package com.mitsudoku.db;
+package com.mitsudoku.function.common.db;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
