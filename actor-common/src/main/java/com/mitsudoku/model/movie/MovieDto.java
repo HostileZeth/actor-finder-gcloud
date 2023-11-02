@@ -1,4 +1,4 @@
-package com.mitsudoku.apiconnector.model;
+package com.mitsudoku.model.movie;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=false)
-public class MovieDto extends ResultDto {
+public class MovieDto {
 
     public boolean adult;
     public String backdrop_path;
@@ -29,5 +29,7 @@ public class MovieDto extends ResultDto {
     public String video;
     public double vote_average;
     public int vote_count;
+
+    public MovieCreditsDto creditsDto;
 
 }

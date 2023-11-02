@@ -2,7 +2,7 @@ package com.mitsudoku.apiconnector.api;
 
 
 import com.mitsudoku.apiconnector.client.WeatherClient;
-import com.mitsudoku.model.WeatherDto;
+import com.mitsudoku.model.weather.WeatherDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

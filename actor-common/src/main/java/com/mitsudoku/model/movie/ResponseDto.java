@@ -1,4 +1,4 @@
-package com.mitsudoku.apiconnector.model;
+package com.mitsudoku.model.movie;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

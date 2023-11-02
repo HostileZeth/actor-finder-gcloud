@@ -1,7 +1,7 @@
 package com.mitsudoku.apiconnector.client;
 
 import com.mitsudoku.config.FeignConfig;
-import com.mitsudoku.model.WeatherDto;
+import com.mitsudoku.model.weather.WeatherDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

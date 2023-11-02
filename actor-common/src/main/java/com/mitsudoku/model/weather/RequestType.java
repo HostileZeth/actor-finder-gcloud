@@ -1,4 +1,4 @@
-package com.mitsudoku.model;
+package com.mitsudoku.model.weather;
 
 public enum RequestType {
     TEST, DB

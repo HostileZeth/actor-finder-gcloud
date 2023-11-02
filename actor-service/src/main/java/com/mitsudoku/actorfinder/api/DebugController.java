@@ -4,8 +4,8 @@ import com.mitsudoku.actorfinder.config.CloudConfig;
 import com.mitsudoku.actorfinder.config.WeatherProperties;
 import com.mitsudoku.actorfinder.pubsub.StatsProducer;
 import com.mitsudoku.client.WeatherClient;
-import com.mitsudoku.model.RequestType;
-import com.mitsudoku.model.WeatherDto;
+import com.mitsudoku.model.weather.RequestType;
+import com.mitsudoku.model.weather.WeatherDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/actor")
+@RequestMapping("/debug")
 @RequiredArgsConstructor
 public class DebugController {
 

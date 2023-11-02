@@ -1,11 +1,11 @@
 package com.mitsudoku.apiconnector.api;
 
-import com.google.api.client.http.HttpMediaType;
 import com.mitsudoku.apiconnector.client.MovieDbClient;
 import com.mitsudoku.apiconnector.exception.ItemNotFoundException;
-import com.mitsudoku.apiconnector.model.MovieCreditsDto;
-import com.mitsudoku.apiconnector.model.MovieDto;
-import com.mitsudoku.apiconnector.model.ResponseDto;
+import com.mitsudoku.model.movie.CastDto;
+import com.mitsudoku.model.movie.MovieCreditsDto;
+import com.mitsudoku.model.movie.MovieDto;
+import com.mitsudoku.model.movie.ResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -40,13 +40,23 @@ public class MovieController {
     }
 
     @GetMapping(path = "/cast-intersection", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<MovieCreditsDto.Cast> getMovieCredits(@RequestParam("first") int first, @RequestParam("second") int second) {
+    public List<CastDto> getMovieCastIntersection(@RequestParam("first") int first, @RequestParam("second") int second) {
         MovieCreditsDto firstCredits = movieDbClient.getMovieCredits(first);
         MovieCreditsDto secondCredits = movieDbClient.getMovieCredits(second);
-
-        Set<Integer> firstSet = firstCredits.getCast().stream().map(MovieCreditsDto.Cast::getId).collect(Collectors.toSet());
-        Set<Integer> intersect = secondCredits.getCast().stream().map(MovieCreditsDto.Cast::getId).filter(firstSet::contains).collect(Collectors.toSet());
+        Set<Integer> firstSet = firstCredits.getCast().stream().map(CastDto::getId).collect(Collectors.toSet());
+        Set<Integer> intersect = secondCredits.getCast().stream().map(CastDto::getId).filter(firstSet::contains).collect(Collectors.toSet());
         return firstCredits.getCast().stream().filter(i -> intersect.contains(i.getId())).collect(Collectors.toList());
+    }
+
+    @GetMapping(value = "/with-cast", produces = MediaType.APPLICATION_JSON_VALUE)
+    public MovieDto getMovieWithCast(@RequestParam("name") String name) {
+        ResponseDto<MovieDto> movies = movieDbClient.getMovie(name);
+        if (movies.total_results == 0) {
+            throw new ItemNotFoundException();
+        }
+        MovieDto movie = movies.getResults().get(0);
+        movie.setCreditsDto(movieDbClient.getMovieCredits(movie.getId()));
+        return movie;
     }
 
 }
