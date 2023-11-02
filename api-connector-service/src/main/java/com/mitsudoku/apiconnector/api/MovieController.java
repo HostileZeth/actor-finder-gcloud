@@ -28,10 +28,10 @@ public class MovieController {
     @GetMapping(path = "/id", produces = MediaType.APPLICATION_JSON_VALUE)
     public int getMovieId(@RequestParam("query") String query) {
         ResponseDto<MovieDto> movie = movieDbClient.getMovie(query);
-        if (movie.total_results == 0) {
+        if (movie.getTotalResults() == 0) {
             throw new ItemNotFoundException();
         }
-        return movie.results.get(0).getId();
+        return movie.getResults().get(0).getId();
     }
 
     @GetMapping(path = "/credits", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -51,7 +51,7 @@ public class MovieController {
     @GetMapping(value = "/with-cast", produces = MediaType.APPLICATION_JSON_VALUE)
     public MovieDto getMovieWithCast(@RequestParam("name") String name) {
         ResponseDto<MovieDto> movies = movieDbClient.getMovie(name);
-        if (movies.total_results == 0) {
+        if (movies.getTotalResults() == 0) {
             throw new ItemNotFoundException();
         }
         MovieDto movie = movies.getResults().get(0);

@@ -9,8 +9,8 @@ import java.util.ArrayList;
 @NoArgsConstructor
 public class MovieCreditsDto {
 
-    public int id;
-    public ArrayList<CastDto> cast;
-    public ArrayList<CrewDto> crew;
+    private int id;
+    private ArrayList<CastDto> cast;
+    private ArrayList<CrewDto> crew;
 
 }

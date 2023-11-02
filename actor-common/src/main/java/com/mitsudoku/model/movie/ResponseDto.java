@@ -1,6 +1,5 @@
 package com.mitsudoku.model.movie;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,10 +8,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class ResponseDto<T> {
+    private int page;
+    private int totalPages;
+    private int totalResults;
 
-    public int page;
-    public int total_pages;
-    public int total_results;
-
-    public List<T> results;
+    private List<T> results;
 }
