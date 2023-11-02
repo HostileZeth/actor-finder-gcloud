@@ -40,12 +40,13 @@ public class MovieController {
     }
 
     @GetMapping(path = "/cast-intersection", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Integer> getMovieCredits(@RequestParam("first") int first, @RequestParam("second") int second) {
+    public List<MovieCreditsDto.Cast> getMovieCredits(@RequestParam("first") int first, @RequestParam("second") int second) {
         MovieCreditsDto firstCredits = movieDbClient.getMovieCredits(first);
         MovieCreditsDto secondCredits = movieDbClient.getMovieCredits(second);
 
         Set<Integer> firstSet = firstCredits.getCast().stream().map(MovieCreditsDto.Cast::getId).collect(Collectors.toSet());
-        return secondCredits.getCast().stream().map(MovieCreditsDto.Cast::getId).filter(firstSet::contains).collect(Collectors.toList());
+        Set<Integer> intersect = secondCredits.getCast().stream().map(MovieCreditsDto.Cast::getId).filter(firstSet::contains).collect(Collectors.toSet());
+        return firstCredits.getCast().stream().filter(i -> intersect.contains(i.getId())).collect(Collectors.toList());
     }
 
 }
