@@ -23,6 +23,7 @@
         <spring.version>4.3.5.RELEASE</spring.version>
         <spring-cloud-gcp.version>4.8.0</spring-cloud-gcp.version>
         <spring-cloud.version>2022.0.4</spring-cloud.version>
+        <org.mapstruct.version>1.6.0.Beta1</org.mapstruct.version>
     </properties>
 
     <modules>
@@ -33,6 +34,7 @@
         <module>api-connector-service</module>
         <module>user-log-function</module>
         <module>message-log-function</module>
+        <module>read-model-service</module>
     </modules>
 
     <dependencies>
@@ -117,6 +119,18 @@
                 <configuration>
                     <source>8</source>
                     <target>8</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
         </plugins>

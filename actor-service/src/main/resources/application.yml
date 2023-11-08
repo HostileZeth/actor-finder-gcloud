@@ -8,10 +8,20 @@ spring:
   sql:
     init:
       mode: always
+  jpa:
+    properties:
+      hibernate:
+        default_schema: ${AF_ACTOR_FINDER_DB_SCHEMA:public}
   datasource:
     username: postgres
     password: actor-pgsql
     hikari.maximum-pool-size: 2
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/0-changelog-master-v1.0.xml
+    parameters:
+      schema: ${spring.jpa.properties.hibernate.default_schema}
 
 cloud:
   random.number:
@@ -40,3 +50,9 @@ weather:
 
 api-connector-service:
   url: localhost:8089
+
+#liquibase:
+#  enabled: true
+#  drop-first: false
+#  change-log: classpath:db/changelog/0-changelog-master-v1.0.xml
+#  default-schema: public

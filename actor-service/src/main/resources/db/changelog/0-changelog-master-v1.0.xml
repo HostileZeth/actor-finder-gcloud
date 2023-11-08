@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="db/changelog/03.11.2023-initial-script.xml"/>
+    <include file="db/changelog/06.11.2023-create-event-table.xml"/>
+    <include file="db/changelog/08.11.2023-alter-event-table-drop-movie-name-column.xml"/>
+</databaseChangeLog>

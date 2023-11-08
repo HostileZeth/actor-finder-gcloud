@@ -11,6 +11,7 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @Entity
+// TODO create sql script / changelog
 public class Movie {
     @Id
     private Long id;

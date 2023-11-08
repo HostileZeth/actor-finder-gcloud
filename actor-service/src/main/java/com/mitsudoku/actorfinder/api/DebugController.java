@@ -1,6 +1,6 @@
 package com.mitsudoku.actorfinder.api;
 
-import com.mitsudoku.actorfinder.config.CloudConfig;
+import com.mitsudoku.actorfinder.config.CloudProperties;
 import com.mitsudoku.actorfinder.config.WeatherProperties;
 import com.mitsudoku.actorfinder.pubsub.StatsProducer;
 import com.mitsudoku.client.WeatherClient;
@@ -25,7 +25,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DebugController {
 
-    private final CloudConfig config;
+    private final CloudProperties config;
     private final WeatherProperties weatherProperties;
     private final WeatherClient weatherClient;
     private final StatsProducer statsProducer;

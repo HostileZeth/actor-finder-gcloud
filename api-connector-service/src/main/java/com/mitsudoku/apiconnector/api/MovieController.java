@@ -1,7 +1,7 @@
 package com.mitsudoku.apiconnector.api;
 
 import com.mitsudoku.apiconnector.client.MovieDbClient;
-import com.mitsudoku.apiconnector.exception.ItemNotFoundException;
+import com.mitsudoku.exception.ItemNotFoundException;
 import com.mitsudoku.model.movie.CastDto;
 import com.mitsudoku.model.movie.MovieCreditsDto;
 import com.mitsudoku.model.movie.MovieDto;
@@ -29,7 +29,7 @@ public class MovieController {
     public int getMovieId(@RequestParam("query") String query) {
         ResponseDto<MovieDto> movie = movieDbClient.getMovie(query);
         if (movie.getTotalResults() == 0) {
-            throw new ItemNotFoundException();
+            throw new ItemNotFoundException("Failed to find movie with name = " + query);
         }
         return movie.getResults().get(0).getId();
     }
@@ -52,7 +52,7 @@ public class MovieController {
     public MovieDto getMovieWithCast(@RequestParam("name") String name) {
         ResponseDto<MovieDto> movies = movieDbClient.getMovie(name);
         if (movies.getTotalResults() == 0) {
-            throw new ItemNotFoundException();
+            throw new ItemNotFoundException("Failed to find movie with name = " + name);
         }
         MovieDto movie = movies.getResults().get(0);
         movie.setCreditsDto(movieDbClient.getMovieCredits(movie.getId()));

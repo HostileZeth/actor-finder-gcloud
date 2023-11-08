@@ -1,21 +1,43 @@
 package com.mitsudoku.actorfinder.api;
 
+import com.mitsudoku.actorfinder.entity.ActorGraph;
+import com.mitsudoku.actorfinder.entity.Event;
+import com.mitsudoku.actorfinder.repository.ActorGraphRepository;
+import com.mitsudoku.actorfinder.repository.EventRepository;
+import com.mitsudoku.actorfinder.service.AuthUserService;
+import com.mitsudoku.actorfinder.service.EventService;
+import com.mitsudoku.model.event.EventType;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
+import java.util.UUID;
+
 @RestController
-@RequestMapping("/actor_graph")
+@RequestMapping("/api/v1/actor-graph")
 @RequiredArgsConstructor
 public class ActorGraphController {
+    private final ActorGraphRepository graphRepository;
+    private final EventRepository eventRepository;
+    private final EventService eventService;
+    private final AuthUserService authUserService;
 
     @PostMapping
-    public Long createGraph() {
-        return 1L; // TODO
+    @Transactional
+    public UUID createGraph() {
+        UUID userId = authUserService.getUserId();
+        ActorGraph actorGraph = new ActorGraph();
+        actorGraph.setCreateStamp(Instant.now());
+        actorGraph.setCreatedUser(userId);
+        actorGraph = graphRepository.saveAndFlush(actorGraph);
+        eventService.processGraphEvent(actorGraph, userId);
+        return actorGraph.getId();
     }
 
     @GetMapping
-    public void getGraph(@RequestParam(name = "id") Long id) {
-        // TODO
+    public ActorGraph getGraph(@RequestParam(name = "id") UUID id) {
+        return graphRepository.getReferenceById(id);
     }
 
 }

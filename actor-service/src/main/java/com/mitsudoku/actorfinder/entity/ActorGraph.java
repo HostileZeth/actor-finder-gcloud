@@ -4,15 +4,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.*;
+import java.util.UUID;
 
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-public class ActorGraph {
+public class ActorGraph extends AuditedEntity{
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private UUID id;
 
 }

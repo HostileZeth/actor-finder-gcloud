@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 @Getter
 @Setter
 @Entity
+// TODO create sql script / changelog
 public class MovieIntersection {
 
     @Id
