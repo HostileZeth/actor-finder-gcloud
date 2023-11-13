@@ -1,6 +1,6 @@
 package com.mitsudoku.model.websocket;
 
-import com.mitsudoku.model.event.EventType;
+import com.mitsudoku.event.EventType;
 import com.mitsudoku.model.movie.MovieDto;
 import lombok.Data;
 

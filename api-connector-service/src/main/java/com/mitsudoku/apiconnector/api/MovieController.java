@@ -26,7 +26,7 @@ public class MovieController {
     }
 
     @GetMapping(path = "/id", produces = MediaType.APPLICATION_JSON_VALUE)
-    public int getMovieId(@RequestParam("query") String query) {
+    public Long getMovieId(@RequestParam("query") String query) {
         ResponseDto<MovieDto> movie = movieDbClient.getMovie(query);
         if (movie.getTotalResults() == 0) {
             throw new ItemNotFoundException("Failed to find movie with name = " + query);
@@ -35,12 +35,12 @@ public class MovieController {
     }
 
     @GetMapping(path = "/credits", produces = MediaType.APPLICATION_JSON_VALUE)
-    public MovieCreditsDto getMovieCredits(@RequestParam("id") int id) {
+    public MovieCreditsDto getMovieCredits(@RequestParam("id") Long id) {
         return movieDbClient.getMovieCredits(id);
     }
 
     @GetMapping(path = "/cast-intersection", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<CastDto> getMovieCastIntersection(@RequestParam("first") int first, @RequestParam("second") int second) {
+    public List<CastDto> getMovieCastIntersection(@RequestParam("first") Long first, @RequestParam("second") Long second) {
         MovieCreditsDto firstCredits = movieDbClient.getMovieCredits(first);
         MovieCreditsDto secondCredits = movieDbClient.getMovieCredits(second);
         Set<Integer> firstSet = firstCredits.getCast().stream().map(CastDto::getId).collect(Collectors.toSet());

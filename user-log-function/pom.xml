@@ -94,7 +94,7 @@
                 <artifactId>function-maven-plugin</artifactId>
                 <version>0.11.0</version>
                 <configuration>
-                    <functionTarget>com.mitsudoku.functions.HelloPubSub</functionTarget>
+                    <functionTarget>functions.com.mitsudoku.readmodel.HelloPubSub</functionTarget>
                     <envVarsFile>.env-test.yaml</envVarsFile>
                 </configuration>
             </plugin>

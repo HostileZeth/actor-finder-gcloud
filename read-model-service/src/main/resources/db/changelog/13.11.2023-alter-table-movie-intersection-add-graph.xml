@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="13.11.2023-alter-table-movie-intersection-add-graph" author="com.mitsudoku">
+        <addColumn tableName="movie_intersection" schemaName="read_model">
+            <column name="graph_id" type="UUID"/>
+        </addColumn>
+        <addForeignKeyConstraint baseTableSchemaName="read_model"
+                                 constraintName="movie_intersection_graph_fk"
+                                 baseTableName="movie_intersection" baseColumnNames="graph_id"
+                                 referencedTableName="actor_graph" referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.cloud.functions.CloudEventsFunction;
-import com.mitsudoku.function.common.db.DbConnection;
+import com.mitsudoku.function.common.DbConnection;
 import io.cloudevents.CloudEvent;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="03.11.2023-create-read-model-schema" author="com.mitsudoku">
+        <sql dbms="postgresql" endDelimiter=";">
+            CREATE SCHEMA read_model
+        </sql>
+    </changeSet>
+
+    <changeSet id="10.11.2023-create-table-actor-graph" author="com.mitsudoku">
+        <createTable schemaName="read_model" tableName="actor_graph">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="created_user" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_stamp" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="10.11.2023-create-table-movie" author="com.mitsudoku">
+        <createTable schemaName="read_model" tableName="movie">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="adult" type="BOOLEAN"/>
+            <column name="backdrop_path" type="TEXT"/>
+            <column name="original_language" type="TEXT"/>
+            <column name="original_title" type="TEXT"/>
+            <column name="release_date" type="TEXT"/>
+            <column name="title" type="TEXT"/>
+            <column name="original_name" type="TEXT"/>
+            <column name="overview" type="TEXT"/>
+            <column name="popularity" type="FLOAT8"/>
+            <column name="poster_path" type="TEXT"/>
+            <column name="first_air_date" type="TEXT"/>
+            <column name="name" type="TEXT"/>
+            <column name="video" type="TEXT"/>
+            <column name="vote_average" type="FLOAT8"/>
+            <column name="vote_count" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="10.11.2023-create-table-actor" author="com.mitsudoku">
+        <createTable schemaName="read_model" tableName="actor"> <!-- TODO -->
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="adult" type="BOOLEAN"/>
+            <column name="gender" type="INTEGER"/>
+            <column name="known_for_department" type="TEXT"/>
+            <column name="name" type="TEXT"/>
+            <column name="original_name" type="TEXT"/>
+            <column name="popularity" type="FLOAT8"/>
+            <column name="profile_path" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="13.11.2023-create-table-graph-movie" author="com.mitsudoku">
+        <createTable schemaName="read_model" tableName="graph_movie">
+            <column name="graph_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="movie_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey schemaName="read_model" tableName="graph_movie" columnNames="graph_id,movie_id" constraintName="graph_movie_pk"/>
+    </changeSet>
+
+    <changeSet id="13.11.2023-create-table-movie-actor" author="com.mitsudoku">
+        <createTable schemaName="read_model" tableName="movie_actor">
+            <column name="movie_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="actor_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey schemaName="read_model" tableName="movie_actor" columnNames="movie_id, actor_id" constraintName="movie_actor_pk"/>
+    </changeSet>
+
+    <changeSet id="13.11.2023-create-table-movie-intersection" author="com.mitsudoku">
+        <createTable schemaName="read_model" tableName="movie_intersection">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="movie_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="movie2_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="actor_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

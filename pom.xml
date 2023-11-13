@@ -27,7 +27,7 @@
     </properties>
 
     <modules>
-        <module>actor-service</module>
+        <module>api-service</module>
         <module>stats-service</module>
         <module>actor-common</module>
         <module>function-common</module>

@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring.cloud.gcp.config:
+  enabled: true
+  name: actor_finder
+  profile: cloud
+
+pubsub:
+  project-id: cedar-card-400213
+  event-topic: event-bus-cloud
+
+api-connector-service:
+  url: https://api-connector-service-dot-cedar-card-400213.lm.r.appspot.com

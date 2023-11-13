@@ -1,1 +1,1 @@
-gcloud functions deploy message-log-function --region=europe-west1 --gen2 --runtime=java17 --entry-point=com.mitsudoku.functions.HelloPubSub --trigger-topic=actor-stats-cloud --env-vars-file .env.yaml
+gcloud functions deploy message-log-function --region=europe-west1 --gen2 --runtime=java17 --entry-point=functions.com.mitsudoku.readmodel.HelloPubSub --trigger-topic=actor-stats-cloud --env-vars-file .env.yaml
