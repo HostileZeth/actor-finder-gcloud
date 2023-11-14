@@ -15,6 +15,11 @@ import jakarta.persistence.*;
 public class MovieIntersection {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "movie_intersection_seq_gen")
+    @SequenceGenerator(
+            name = "movie_intersection_seq_gen",
+            sequenceName = "movie_intersection_seq",
+            allocationSize = 1)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

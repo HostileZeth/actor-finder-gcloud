@@ -1,13 +1,12 @@
 package com.mitsudoku.readmodel.entity;
 
-import com.mitsudoku.readmodel.util.StringListConverter;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,10 +14,12 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Movie {
-    @Id
-    private Long id; // fill with api output id
 
+    @Id
+    @EqualsAndHashCode.Include
+    private Long id; // fill with api output id
     private boolean adult;
     private String backdropPath;
 
@@ -36,7 +37,7 @@ public class Movie {
     private double voteAverage;
     private int voteCount;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "movie_actor",
             joinColumns = @JoinColumn(name = "movie_id"),

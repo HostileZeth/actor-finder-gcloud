@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="13.11.2023-alter-table-movie-intersection-add-graph" author="com.mitsudoku">
+        <dropForeignKeyConstraint baseTableSchemaName="read_model" baseTableName="movie_intersection" constraintName="movie_intersection_graph_fk"/>
+        <addForeignKeyConstraint baseTableSchemaName="read_model"
+                                 constraintName="movie_intersection_graph_fk"
+                                 referencedTableSchemaName="read_model"
+                                 baseTableName="movie_intersection" baseColumnNames="graph_id"
+                                 referencedTableName="actor_graph" referencedColumnNames="id"/>
+    </changeSet>
+    
+    <changeSet id="14.11.2023-add-movie-intersection-sequence" author="com.mitsudoku">
+        <createSequence schemaName="read_model" sequenceName="movie_intersection_seq"/>
+        <addDefaultValue schemaName="read_model" tableName="movie_intersection" columnName="id"
+                         defaultValueComputed="nextval('read_model.movie_intersection_seq')"/>
+    </changeSet>
+
+    <changeSet id="13.11.2023-alter-table-movie-intersection-add-fks" author="com.mitsudoku">
+        <addForeignKeyConstraint baseTableSchemaName="read_model"
+                                 constraintName="movie_intersection_movie_fk"
+                                 referencedTableSchemaName="read_model"
+                                 baseTableName="movie_intersection" baseColumnNames="movie_id"
+                                 referencedTableName="movie" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableSchemaName="read_model"
+                                 constraintName="movie_intersection_movie2_fk"
+                                 referencedTableSchemaName="read_model"
+                                 baseTableName="movie_intersection" baseColumnNames="movie2_id"
+                                 referencedTableName="movie" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableSchemaName="read_model"
+                                 constraintName="movie_intersection_actor_fk"
+                                 referencedTableSchemaName="read_model"
+                                 baseTableName="movie_intersection" baseColumnNames="actor_id"
+                                 referencedTableName="actor" referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>

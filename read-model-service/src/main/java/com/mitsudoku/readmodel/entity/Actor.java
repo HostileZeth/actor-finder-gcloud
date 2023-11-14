@@ -1,5 +1,6 @@
 package com.mitsudoku.readmodel.entity;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,8 +12,11 @@ import jakarta.persistence.*;
 @Getter
 @Setter
 @Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Actor {
+
     @Id
+    @EqualsAndHashCode.Include
     private Long id; // fill with api output id
 
     private boolean adult;

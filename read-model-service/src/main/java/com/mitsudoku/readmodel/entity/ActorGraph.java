@@ -15,7 +15,7 @@ public class ActorGraph extends AuditedEntity {
     @Id
     private UUID id;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "graph_movie",
             joinColumns = @JoinColumn(name = "graph_id"),
@@ -23,7 +23,7 @@ public class ActorGraph extends AuditedEntity {
     )
     private Set<Movie> movieList = new HashSet<>();
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "graph_id")
     private List<MovieIntersection> movieIntersections = new ArrayList<>();
 
