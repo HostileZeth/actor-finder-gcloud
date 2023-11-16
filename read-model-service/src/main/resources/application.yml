@@ -15,6 +15,7 @@ spring:
     properties:
       hibernate:
         default_schema: ${AF_ACTOR_FINDER_DB_SCHEMA:read_model}
+    show-sql: true
   datasource:
     username: postgres
     password: actor-pgsql

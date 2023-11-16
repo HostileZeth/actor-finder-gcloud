@@ -8,6 +8,5 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface MovieMapper {
 
-    @Mapping(target = "actors", source = "creditsDto.cast")
     Movie toEntity(MovieDto movieDto);
 }
