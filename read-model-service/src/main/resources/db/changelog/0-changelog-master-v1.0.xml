@@ -6,4 +6,5 @@
     <include file="db/changelog/03.11.2023-initial-script.xml"/>
     <include file="db/changelog/13.11.2023-alter-table-movie-intersection-add-graph.xml"/>
     <include file="db/changelog/14.11.2023-fix-movie-intersection-graph-fk.xml"/>
+    <include file="db/changelog/16.11.2023-fix-graph-movie-add-fks.xml"/>
 </databaseChangeLog>

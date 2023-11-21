@@ -18,6 +18,7 @@ public class EventDto {
     private Long id;
     private EventType eventType;
     private UUID graphId;
+    private Long movieId;
     private MovieDto movieDto;
     private UUID createdUser;
     private Instant createStamp;

@@ -48,7 +48,6 @@ public class MovieController {
         if (!actorGraphRepository.existsById(graphId)) {
             throw new ItemNotFoundException("Failed to find graph with id = " + graphId);
         }
-        // TODO validate event
         eventService.processMovieEvent(null, movieId, graphId, EventType.REMOVE_MOVIE, authUserService.getUserId());
     }
 

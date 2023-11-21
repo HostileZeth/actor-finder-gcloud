@@ -9,4 +9,6 @@ import org.mapstruct.Mapping;
 public interface MovieMapper {
 
     Movie toEntity(MovieDto movieDto);
+
+    com.mitsudoku.readmodel.model.MovieDto toDto(Movie movie);
 }

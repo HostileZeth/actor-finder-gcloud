@@ -1,15 +1,13 @@
 package com.mitsudoku.readmodel.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.*;
 
 @NoArgsConstructor
-@Getter
-@Setter
+@AllArgsConstructor
+@Data
 @Entity
 public class ActorGraph extends AuditedEntity {
     @Id

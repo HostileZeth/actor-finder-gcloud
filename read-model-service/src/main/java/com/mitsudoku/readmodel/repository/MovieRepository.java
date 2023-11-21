@@ -3,6 +3,7 @@ package com.mitsudoku.readmodel.repository;
 import com.mitsudoku.readmodel.entity.ActorGraph;
 import com.mitsudoku.readmodel.entity.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
@@ -19,5 +20,8 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
         and ma2.movie_id <> 335984
         )
     */
+
+    @Query(nativeQuery = true, value = "SELECT COUNT(*) FROM read_model.graph_movie gm WHERE gm.movie_id = :movieId")
+    Long countGraphs(Long movieId);
 
 }

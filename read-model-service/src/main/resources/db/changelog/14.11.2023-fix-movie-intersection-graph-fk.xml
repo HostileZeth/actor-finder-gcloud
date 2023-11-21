@@ -35,5 +35,19 @@
                                  baseTableName="movie_intersection" baseColumnNames="actor_id"
                                  referencedTableName="actor" referencedColumnNames="id"/>
     </changeSet>
+    <changeSet id="13.11.2023-alter-table-movie-intersection-fix-cascade-fks" author="com.mitsudoku">
+        <dropForeignKeyConstraint baseTableSchemaName="read_model" baseTableName="movie_intersection" constraintName="movie_intersection_movie_fk"/>
+        <dropForeignKeyConstraint baseTableSchemaName="read_model" baseTableName="movie_intersection" constraintName="movie_intersection_movie2_fk"/>
+        <addForeignKeyConstraint baseTableSchemaName="read_model"
+                                 constraintName="movie_intersection_movie_fk"
+                                 referencedTableSchemaName="read_model"
+                                 baseTableName="movie_intersection" baseColumnNames="movie_id"
+                                 referencedTableName="movie" referencedColumnNames="id" onDelete="CASCADE"/>
+        <addForeignKeyConstraint baseTableSchemaName="read_model"
+                                 constraintName="movie_intersection_movie2_fk"
+                                 referencedTableSchemaName="read_model"
+                                 baseTableName="movie_intersection" baseColumnNames="movie2_id"
+                                 referencedTableName="movie" referencedColumnNames="id" onDelete="CASCADE"/>
+    </changeSet>
 
 </databaseChangeLog>

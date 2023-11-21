@@ -30,4 +30,5 @@ public interface MovieIntersectionRepository extends JpaRepository<MovieIntersec
                             values (?1, ?2, ?3, ?4)""")
     void putMovieIntersections(Long movieId, Long movie2id, Long actorId, UUID graphId);
 
+
 }

@@ -15,6 +15,7 @@ import java.util.UUID;
 public interface EventMapper {
 
     @Mapping(target = "id", source = "event.id")
+    @Mapping(target = "movieId", source = "event.movieId")
     @Mapping(target = "movieDto", source = "movieWithCast")
     EventDto toMovieEvent(Event event, MovieDto movieWithCast);
 

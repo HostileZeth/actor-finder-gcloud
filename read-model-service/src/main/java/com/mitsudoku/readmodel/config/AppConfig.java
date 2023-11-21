@@ -7,12 +7,16 @@ import com.mitsudoku.readmodel.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Configuration
+@EnableWebSocket
+@Import(value = {WebSocketConfig.class})
 public class AppConfig {
 
     @Bean
