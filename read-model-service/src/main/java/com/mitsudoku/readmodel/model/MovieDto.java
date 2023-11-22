@@ -34,5 +34,5 @@ public class MovieDto {
     private double voteAverage;
     private int voteCount;
 
-    private List<Actor> actors = new ArrayList<>();
+    private List<ActorDto> actors = new ArrayList<>();
 }

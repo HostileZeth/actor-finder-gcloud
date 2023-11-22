@@ -6,6 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring", uses = {
         ActorMapper.class,
+        MovieMapper.class,
         MovieIntersectionMapper.class
 })
 public interface ActorGraphMapper {

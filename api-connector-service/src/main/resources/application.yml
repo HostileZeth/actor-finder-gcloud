@@ -1,3 +1,6 @@
+gcloud:
+  project-id: cedar-card-400213
+
 server:
   port: 8089
 
